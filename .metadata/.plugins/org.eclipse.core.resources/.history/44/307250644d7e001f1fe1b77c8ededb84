@@ -1,0 +1,49 @@
+### Trả lời phần "Questions":
+
+1. What happens if users choose “Cancel”?
+   - Nếu người dùng chọn "Cancel", hành động chạy ứng dụng sẽ bị hủy bỏ, và quá trình chạy (launch) sẽ không được thực hiện.
+   Điều này có nghĩa là không có mã nào sẽ được biên dịch hay thực thi. Việc chọn "Cancel" về cơ bản dừng quá trình khởi chạy ngay tại thời điểm đó.
+
+2. How to customize the options to users, e.g., only two options: “Yes” and “No”, OR “I do” and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help).
+   - Để tùy chỉnh các lựa chọn hiện ra trong hộp thoại cho người dùng, ta có thể sử dụng phương thức `JOptionPane.showOptionDialog` trong Java để tạo ra một hộp thoại tùy chỉnh với các tùy chọn riêng.
+	Đây là cách sử dụng `JOptionPane.showOptionDialog` để hiển thị chỉ hai tùy chọn: **“Yes”** và **“No”** hoặc **“I do”** và **“I don’t”**:
+
+  Code java:
+  #========================================================================#
+   import javax.swing.JOptionPane;
+
+   public class ChoosingOption {
+       public static void main(String[] args) {
+           // Tùy chỉnh hộp thoại với hai tùy chọn Yes và No
+           String[] options = {"Yes", "No"};
+           int choice = JOptionPane.showOptionDialog(null,
+                   "Do you want to continue?",
+                   "Choose an Option",
+                   JOptionPane.DEFAULT_OPTION,
+                   JOptionPane.INFORMATION_MESSAGE,
+                   null,
+                   options,
+                   options[0]);
+
+           // Tùy chỉnh hộp thoại với hai tùy chọn "I do" và "I don’t"
+           String[] customOptions = {"I do", "I don’t"};
+           int customChoice = JOptionPane.showOptionDialog(null,
+                   "Do you agree?",
+                   "Choose an Option",
+                   JOptionPane.DEFAULT_OPTION,
+                   JOptionPane.INFORMATION_MESSAGE,
+                   null,
+                   customOptions,
+                   customOptions[0]);
+
+           // Xử lý sự lựa chọn của người dùng
+           if (customChoice == 0) {
+               System.out.println("User chose: I do");
+           } else {
+               System.out.println("User chose: I don’t");
+           }
+       }
+   }
+  #========================================================================# 
+   - Ở đây, `showOptionDialog` cho phép tùy chỉnh các nút với chuỗi văn bản cụ thể mà ta muốn, chẳng hạn như "Yes", "No", "I do", "I don’t".
+   Ta có thể điều chỉnh các tùy chọn cho phù hợp với yêu cầu của ứng dụng.

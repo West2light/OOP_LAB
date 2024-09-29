@@ -1,0 +1,60 @@
+ Trả lời phần "Questions":
+
+1. What happens if users choose “Cancel”?
+   Nếu người dùng chọn "Cancel", hành động chạy ứng dụng sẽ bị hủy bỏ, và quá trình chạy (launch) sẽ không được thực hiện. 
+   Điều này có nghĩa là không có mã nào sẽ được biên dịch hay thực thi. 
+   Việc chọn "Cancel" về cơ bản dừng quá trình khởi chạy ngay tại thời điểm đó..
+
+2. How to customize the options to users, e.g., only two options: “Yes” and “No”, OR “I do” and “I don’t”
+   - Để tùy chỉnh các lựa chọn cho người dùng, ví dụ như chỉ có hai tùy chọn "Yes" và "No" hoặc "I do" và "I don’t", ta có thể sử dụng phương thức `JOptionPane.showOptionDialog()`.
+    Phương thức này cho phép  tùy chỉnh các nút lựa chọn.
+
+   Dưới đây là cách sử dụng `showOptionDialog` để tùy chỉnh lựa chọn:
+
+ #=========================================================================#
+   import javax.swing.JOptionPane;
+
+   public class ChoosingOption {
+       public static void main(String[] args) {
+           // Tùy chỉnh hộp thoại với hai tùy chọn "Yes" và "No"
+           String[] options = {"Yes", "No"};
+           int choice = JOptionPane.showOptionDialog(null,
+                   "Do you want to continue?",
+                   "Choose an Option",
+                   JOptionPane.YES_NO_OPTION,
+                   JOptionPane.INFORMATION_MESSAGE,
+                   null,
+                   options,
+                   options[0]);
+
+           if (choice == 0) {
+               JOptionPane.showMessageDialog(null, "You chose Yes");
+           } else if (choice == 1) {
+               JOptionPane.showMessageDialog(null, "You chose No");
+           } else {
+               JOptionPane.showMessageDialog(null, "You chose Cancel");
+           }
+
+           // Tùy chỉnh hộp thoại với hai tùy chọn "I do" và "I don’t"
+           String[] customOptions = {"I do", "I don’t"};
+           int customChoice = JOptionPane.showOptionDialog(null,
+                   "Do you agree?",
+                   "Choose an Option",
+                   JOptionPane.DEFAULT_OPTION,
+                   JOptionPane.INFORMATION_MESSAGE,
+                   null,
+                   customOptions,
+                   customOptions[0]);
+
+           if (customChoice == 0) {
+               JOptionPane.showMessageDialog(null, "User chose: I do");
+           } else {
+               JOptionPane.showMessageDialog(null, "User chose: I don’t");
+           }
+       }
+   }
+ #=========================================================================#
+
+   - Trong ví dụ trên:
+     - Ta có thể tùy chỉnh tiêu đề hộp thoại, câu hỏi hiển thị, và các tùy chọn (ví dụ: "Yes" hoặc "No", hoặc "I do" hoặc "I don’t").
+     - `showOptionDialog` cho phép tạo các nút với nội dung bất kỳ mà ta muốn.

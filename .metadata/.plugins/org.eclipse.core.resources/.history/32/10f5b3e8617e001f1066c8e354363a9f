@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class InputMonth {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Please enter a month (e.g., January, Jan, Jan., or 1):");
+        String input = scanner.nextLine().trim().toLowerCase(); // Chuyển về chữ thường và loại bỏ khoảng trắng
+
+        int monthNumber = -1; // Biến để lưu số của tháng (1 - 12)
+
+        switch (input) {
+            case "january":
+            case "jan":
+            case "jan.":
+            case "1":
+                monthNumber = 1;
+                break;
+            case "february":
+            case "feb":
+            case "feb.":
+            case "2":
+                monthNumber = 2;
+                break;
+            case "march":
+            case "mar":
+            case "mar.":
+            case "3":
+                monthNumber = 3;
+                break;
+            case "april":
+            case "apr":
+            case "apr.":
+            case "4":
+                monthNumber = 4;
+                break;
+            // ... Thêm tất cả các tháng khác
+            case "december":
+            case "dec":
+            case "dec.":
+            case "12":
+                monthNumber = 12;
+                break;
+            default:
+                System.out.println("Invalid month input.");
+                break;
+        }
+
+        if (monthNumber != -1) {
+            System.out.println("The month number is: " + monthNumber);
+        }
+
+        scanner.close();
+    }
+}
